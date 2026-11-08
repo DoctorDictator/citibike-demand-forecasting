@@ -1,0 +1,29 @@
+project:
+  timezone: "America/New_York"
+  data_dir: "data"
+
+citibike:
+  system_data_page: "https://citibikenyc.com/system-data"
+  trip_url_template: "https://s3.amazonaws.com/tripdata/{month}-citibike-tripdata.zip"
+  gbfs_root: "https://gbfs.citibikenyc.com/gbfs/2.3/gbfs.json"
+  gbfs_interval_seconds: 300
+
+weather:
+  noaa_service: "https://www.ncei.noaa.gov/access/services/data/v1"
+  # Central Park daily-summary station. Hourly weather can later be added as a second source.
+  station_id: "USW00094728"
+  dataset: "daily-summaries"
+
+nyc_events:
+  dataset_id: "bkfu-528j"
+  endpoint: "https://data.cityofnewyork.us/resource/bkfu-528j.csv"
+
+features:
+  lags: [1, 2, 3, 24, 48, 168]
+  rolling_windows: [3, 6, 24, 168]
+  shortage_threshold: 0.10
+  overflow_threshold: 0.90
+
+models:
+  random_state: 42
+  test_fraction: 0.20
